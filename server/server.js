@@ -52,6 +52,12 @@ app.use("/api/status", (req, res) => res.send("Server is live"))
 app.use("/api/auth", userRouter)
 app.use("/api/messages", messageRouter)
 
-server.listen(PORT, () =>
+
+if(process.env.NODE_DEV !== "production"){
+    server.listen(PORT, () =>
   console.log(`Server is running on port ${PORT}`)
 )
+}
+
+export default server
+
